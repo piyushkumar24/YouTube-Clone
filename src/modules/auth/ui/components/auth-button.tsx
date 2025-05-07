@@ -1,19 +1,40 @@
-import { Button } from '@/components/ui/button'
-import { UserCircleIcon } from 'lucide-react'
-import React from 'react'
+"use client";
 
-type Props = {}
+import { Button } from "@/components/ui/button";
+import { ClapperboardIcon, LoaderIcon, UserCircleIcon } from "lucide-react";
 
-function AuthButton({ }: Props) {
-    // TODO: Add different auth states
+import { ClerkLoading, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
+export const AuthButton = () => {
     return (
-        <Button
-            variant={"outline"}
-            className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-500 border-blue-500/20 rounded-full shadow-none">
-            <UserCircleIcon className="h-5 w-5"/>
-            Sign In
-        </Button>
-    )
-}
+        <>
+            <ClerkLoading>
+                <div className="w-full flex items-center justify-center">
+                    <LoaderIcon className="h-5 w-5 text-gray-500/80 animate-spin" />
+                </div>
+            </ClerkLoading>
+            <SignedIn>
+                <UserButton>
+                    {/* <UserButton.MenuItems> */}
+                        {/* Todo: Add user profile menu button */}
+                        {/* <UserButton.Link href="/studio" label="Studio" labelIcon={<ClapperboardIcon className="size-4" />} /> */}
+                        {/* <UserButton.Action label="manageAccount" /> */}
+                    {/* </UserButton.MenuItems> */}
+                </UserButton>
 
-export default AuthButton
+                {/* Add menu items here for studio and User profile */}
+            </SignedIn>
+            <SignedOut>
+                <SignInButton mode="modal">
+                    <Button
+                        variant={"outline"}
+                        className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-500 border-blue-500/20 rounded-full shadow-none"
+                    >
+                        <UserCircleIcon className="h-5 w-5" />
+                        Sign in
+                    </Button>
+                </SignInButton>
+            </SignedOut>
+        </>
+    );
+};
