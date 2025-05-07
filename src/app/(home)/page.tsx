@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button } from "@/components/ui/button"
+import Image from 'next/image'
 
 type Props = {}
 
 const Home = (props: Props) => {
   return (
     <div>
-      <Button>Click Me</Button>
+      I will load videos in the future!
     </div>
   )
 }
