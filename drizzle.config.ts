@@ -10,6 +10,6 @@ export default defineConfig({
     schema: "./src/db/schema.ts",
     dialect: "postgresql",
     dbCredentials: {
-        url: process.env.DATABASE_URL!,
+        url: "postgresql://you-tube_owner:npg_Si01nEwVuRNd@ep-silent-recipe-a1nx95qx-pooler.ap-southeast-1.aws.neon.tech/you-tube?sslmode=require",
     },
 });
